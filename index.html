@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="it">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -10,10 +10,10 @@
     <main class="page">
       <section class="intro">
         <p class="eyebrow">Standalone Web Component</p>
-        <h1>Web player embeddabile con snippet unico e drag-and-drop diretto</h1>
+        <h1>Embeddable web player with a single snippet and direct drag and drop</h1>
         <p class="lede">
-          Un player scritto in JavaScript vanilla, senza framework e senza build step.
-          Puoi usarlo con file locali trascinati direttamente sul player oppure con URL remoti, e inserirlo in qualsiasi pagina con un solo snippet.
+          A vanilla JavaScript player with no framework and no build step.
+          Use it with local files dropped straight onto the player or with remote URLs, then embed it anywhere with a single snippet.
         </p>
       </section>
 
@@ -21,29 +21,29 @@
 
       <section class="tool-card">
         <div>
-          <h2>Drag-and-drop sul player</h2>
-          <p>Trascina MP3, WAV, OGG o M4A direttamente sopra il widget: i file verranno aggiunti subito alla playlist.</p>
+          <h2>Drag and Drop on the Player</h2>
+          <p>Drag MP3, WAV, OGG, or M4A files directly onto the widget and they will be added to the playlist immediately.</p>
         </div>
         <label class="file-picker">
-          <span>Oppure seleziona file audio</span>
+          <span>Or select audio files</span>
           <input id="local-files" type="file" accept="audio/*" multiple />
         </label>
       </section>
 
       <section class="tool-card">
         <div>
-          <h2>Aggiungi un URL remoto</h2>
-          <p>Incolla un link a un file audio remoto. Se il server consente CORS verrà letto anche il waveform reale, altrimenti uso un fallback visivo.</p>
+          <h2>Add a Remote URL</h2>
+          <p>Paste a link to a remote audio file. If the server allows CORS, the player will render the real waveform; otherwise it falls back gracefully.</p>
         </div>
         <form id="remote-form" class="remote-form">
           <input id="remote-url" type="url" placeholder="https://example.com/audio/track.mp3" required />
-          <input id="remote-title" type="text" placeholder="Titolo opzionale" />
-          <button type="submit">Aggiungi URL</button>
+          <input id="remote-title" type="text" placeholder="Optional title" />
+          <button type="submit">Add URL</button>
         </form>
       </section>
 
       <section class="usage-card">
-        <h2>Snippet unico</h2>
+        <h2>Single Snippet</h2>
         <pre><code>&lt;script
   src="https://tuo-dominio.it/mixtape-player.js"
   data-mixtape-widget
@@ -53,7 +53,7 @@
       </section>
 
       <section class="usage-card">
-        <h2>Modalità classica</h2>
+        <h2>Classic Mode</h2>
         <pre><code>&lt;script src="mixtape-player.js"&gt;&lt;/script&gt;
 &lt;mixtape-player id="player"&gt;&lt;/mixtape-player&gt;
 &lt;script&gt;
@@ -67,7 +67,7 @@
       </section>
 
       <section class="usage-card">
-        <h2>Versione minimale</h2>
+        <h2>Minimal Variant</h2>
         <pre><code>&lt;script
   src="https://tuo-dominio.it/mixtape-player.js"
   data-mixtape-widget
@@ -77,7 +77,7 @@
       </section>
 
       <section class="usage-card">
-        <h2>Versione compact con override</h2>
+        <h2>Compact Variant with Override</h2>
         <pre><code>&lt;script
   src="https://tuo-dominio.it/mixtape-player.js"
   data-mixtape-widget

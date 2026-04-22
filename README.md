@@ -1,31 +1,31 @@
 # Mixtape Player
 
-Un web player standalone ispirato al layout dello screenshot: nessun framework, nessuna build, un solo file JavaScript da includere in qualsiasi pagina.
+A standalone web player inspired by the screenshot layout: no framework, no build step, and a single JavaScript file you can embed in any page.
 
-## Cosa include
+## Features
 
-- componente custom element: `<mixtape-player>`
-- modalità widget da incollare con uno snippet unico
-- supporto a file audio locali caricati dal browser
-- drag-and-drop diretto dei file sul player
-- supporto a file remoti via URL
-- waveform con fallback visivo quando una sorgente remota non espone CORS
-- play/pause, previous/next, seek bar, volume, shuffle e repeat
-- playlist con selezione tracce
-- personalizzazione via opzioni JavaScript e CSS custom properties
-- demo pronta in `index.html`
+- custom element component: `<mixtape-player>`
+- single-snippet widget mode
+- support for local audio files selected in the browser
+- direct drag-and-drop onto the player
+- support for remote audio URLs
+- waveform rendering with graceful fallback when remote sources do not expose CORS
+- play/pause, previous/next, seek bar, volume, shuffle, and repeat
+- clickable playlist track selection
+- customization through JavaScript options and CSS custom properties
+- ready-to-run demo in `index.html`
 
-## Avvio rapido
+## Quick Start
 
-Apri un server statico nella cartella:
+Start a static server in the project folder:
 
 ```bash
 python3 -m http.server 8080
 ```
 
-Poi visita `http://localhost:8080`.
+Then open `http://localhost:8080`.
 
-## Snippet unico
+## Single Snippet
 
 ```html
 <script
@@ -36,9 +36,9 @@ Poi visita `http://localhost:8080`.
 ></script>
 ```
 
-Questo snippet crea automaticamente il widget nel punto in cui incolli lo script.
+This snippet automatically mounts the widget exactly where you place the script tag.
 
-## Variante minimale
+## Minimal Variant
 
 ```html
 <script
@@ -49,18 +49,18 @@ Questo snippet crea automaticamente il widget nel punto in cui incolli lo script
 ></script>
 ```
 
-## Preset disponibili
+## Available Presets
 
 - `full`
-  Player completo.
+  Full player UI.
 - `minimal`
-  Versione essenziale, senza waveform, tracklist e controlli secondari.
+  Essential version without waveform, tracklist, or secondary controls.
 - `compact`
-  Via di mezzo più leggera, con tracklist e vari elementi secondari nascosti.
+  A lighter middle ground with the tracklist and several secondary elements hidden.
 
-Puoi usare `variant` e poi rifinire con i singoli `show*`. I toggle manuali vincono sempre sul preset.
+You can start from a `variant` and then refine it with individual `show*` flags. Manual toggles always override the preset.
 
-## Uso base
+## Basic Usage
 
 ```html
 <script src="/path/to/mixtape-player.js"></script>
@@ -84,7 +84,7 @@ Puoi usare `variant` e poi rifinire con i singoli `show*`. I toggle manuali vinc
 </script>
 ```
 
-## File locali scelti dall’utente
+## Local Files Chosen by the User
 
 ```html
 <input id="files" type="file" accept="audio/*" multiple />
@@ -98,11 +98,11 @@ Puoi usare `variant` e poi rifinire con i singoli `show*`. I toggle manuali vinc
 </script>
 ```
 
-## Drag-and-drop diretto
+## Direct Drag and Drop
 
-Se `allowFileDrop` e `true`, puoi trascinare file audio direttamente sopra il player e verranno aggiunti subito alla playlist.
+If `allowFileDrop` is `true`, you can drag audio files directly onto the player and they will be added to the playlist immediately.
 
-## Alternativa con JSON inline
+## Inline JSON Alternative
 
 ```html
 <script src="/path/to/mixtape-player.js"></script>
@@ -121,7 +121,7 @@ Se `allowFileDrop` e `true`, puoi trascinare file audio direttamente sopra il pl
 </mixtape-player>
 ```
 
-## Config disponibile
+## Available Config
 
 ```js
 {
@@ -172,7 +172,7 @@ Se `allowFileDrop` e `true`, puoi trascinare file audio direttamente sopra il pl
 }
 ```
 
-## CSS variables utili
+## Useful CSS Variables
 
 ```css
 mixtape-player.custom-theme {
@@ -188,20 +188,20 @@ mixtape-player.custom-theme {
 }
 ```
 
-## API JavaScript
+## JavaScript API
 
-- `element.load(config)` aggiorna tutto il player
-- `element.setTheme(theme)` aggiorna le CSS vars del componente
-- `element.setTracks(tracks, options)` sostituisce la playlist
-- `element.addTracks(tracks, options)` aggiunge nuove tracce
-- `element.loadFiles(fileList, options)` aggiunge file locali selezionati dal browser
-- `element.play()` avvia la riproduzione
-- `element.pause()` mette in pausa
-- `window.MixtapePlayer.create(target, config)` crea e monta il componente
-- `window.MixtapePlayer.mountFromScript(script)` monta il widget da uno script con `data-mixtape-widget`
-- `window.MixtapePlayer.variants` espone i preset disponibili
+- `element.load(config)` updates the full player configuration
+- `element.setTheme(theme)` updates the component CSS variables
+- `element.setTracks(tracks, options)` replaces the playlist
+- `element.addTracks(tracks, options)` appends new tracks
+- `element.loadFiles(fileList, options)` adds local files selected in the browser
+- `element.play()` starts playback
+- `element.pause()` pauses playback
+- `window.MixtapePlayer.create(target, config)` creates and mounts the component
+- `window.MixtapePlayer.mountFromScript(script)` mounts the widget from a script tag with `data-mixtape-widget`
+- `window.MixtapePlayer.variants` exposes the available presets
 
-## Toggle UI disponibili
+## Available UI Toggles
 
 - `showCover`
 - `showArtist`
@@ -218,7 +218,7 @@ mixtape-player.custom-theme {
 - `showMenu`
 - `showTracklist`
 
-## Eventi emessi
+## Emitted Events
 
 - `trackchange`
 - `playstatechange`
@@ -227,4 +227,4 @@ mixtape-player.custom-theme {
 - `volumechange`
 - `filesdropped`
 
-Ogni evento contiene `detail.track`, `detail.trackIndex`, `detail.isPlaying`, `detail.shuffle`, `detail.repeatMode` e `detail.volume`.
+Each event includes `detail.track`, `detail.trackIndex`, `detail.isPlaying`, `detail.shuffle`, `detail.repeatMode`, and `detail.volume`.

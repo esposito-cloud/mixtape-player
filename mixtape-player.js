@@ -508,7 +508,7 @@ MIXTAPE_PLAYER_TEMPLATE.innerHTML = `
     <div class="drop-overlay" aria-hidden="true" data-visible="false">
       <div>
         <span class="drop-title"></span>
-        <span class="drop-copy">Rilascia i file audio per aggiungerli subito alla playlist.</span>
+        <span class="drop-copy">Drop audio files to add them to the playlist instantly.</span>
       </div>
     </div>
 
