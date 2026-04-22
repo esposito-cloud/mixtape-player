@@ -17,6 +17,7 @@ MIXTAPE_PLAYER_TEMPLATE.innerHTML = `
       --mixtape-font: "Space Grotesk", "Avenir Next", sans-serif;
       --mixtape-tracklist-max-height: 440px;
       display: block;
+      container-type: inline-size;
       font-family: var(--mixtape-font);
       color: var(--mixtape-text);
     }
@@ -477,7 +478,29 @@ MIXTAPE_PLAYER_TEMPLATE.innerHTML = `
       display: block;
     }
 
-    @media (max-width: 1080px) {
+    @container (max-width: 760px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 28px 22px 24px;
+        gap: 22px;
+      }
+
+      .cover-wrap {
+        max-width: 320px;
+      }
+
+      .title {
+        font-size: clamp(1.8rem, 9cqi, 3rem);
+      }
+
+      .artist {
+        font-size: clamp(1rem, 4.6cqi, 1.5rem);
+      }
+
+      .waveform {
+        height: 84px;
+      }
+
       .control-row {
         grid-template-columns: auto auto auto auto auto auto;
       }
@@ -491,27 +514,7 @@ MIXTAPE_PLAYER_TEMPLATE.innerHTML = `
       }
     }
 
-    @media (max-width: 840px) {
-      .hero {
-        grid-template-columns: 1fr;
-        padding: 28px 22px 24px;
-        gap: 22px;
-      }
-
-      .cover-wrap {
-        max-width: 320px;
-      }
-
-      .play-btn {
-        width: 72px;
-        height: 72px;
-      }
-
-      .play-btn svg {
-        width: 32px;
-        height: 32px;
-      }
-
+    @container (max-width: 560px) {
       .control-row {
         grid-template-columns: repeat(4, minmax(0, auto));
       }
@@ -523,6 +526,16 @@ MIXTAPE_PLAYER_TEMPLATE.innerHTML = `
 
       .volume-wrap {
         grid-column: 1 / -1;
+      }
+
+      .play-btn {
+        width: 72px;
+        height: 72px;
+      }
+
+      .play-btn svg {
+        width: 32px;
+        height: 32px;
       }
 
       .track {

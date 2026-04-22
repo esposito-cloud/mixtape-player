@@ -145,7 +145,7 @@ mixtape-player {
 }
 
 .player-frame-full {
-  max-width: 760px;
+  max-width: 920px;
 }
 
 .player-frame-compact {
@@ -272,6 +272,10 @@ mixtape-player {
 
 .usage-card {
   padding: 22px;
+}
+
+.usage-card-wide {
+  grid-column: 1 / -1;
 }
 
 .usage-head {
