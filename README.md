@@ -17,13 +17,9 @@ A standalone web player inspired by the screenshot layout: no framework, no buil
 
 ## Quick Start
 
-Start a static server in the project folder:
+Serve the project folder from any web server, then open the local URL in your browser.
 
-```bash
-python3 -m http.server 8080
-```
-
-Then open `http://localhost:8080`.
+The demo should be loaded over HTTP rather than opened directly from the filesystem.
 
 ## Single Snippet
 
