@@ -25,7 +25,7 @@ The demo should be loaded over HTTP rather than opened directly from the filesys
 
 ```html
 <script
-  src="https://tuo-dominio.it/mixtape-player.js"
+  src="https://your-domain.com/mixtape-player.js"
   data-mixtape-widget
   data-variant="full"
   data-config='{"title":"My Playlist","artist":"Various Artists","tracks":[{"title":"Intro","src":"/audio/intro.mp3"},{"title":"Remote Track","src":"https://example.com/audio/track.ogg"}]}'
@@ -38,7 +38,7 @@ This snippet automatically mounts the widget exactly where you place the script 
 
 ```html
 <script
-  src="https://tuo-dominio.it/mixtape-player.js"
+  src="https://your-domain.com/mixtape-player.js"
   data-mixtape-widget
   data-variant="minimal"
   data-config='{"title":"Single Track","artist":"Demo","tracks":[{"title":"Intro","src":"/audio/intro.mp3"}]}'
