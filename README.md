@@ -14,6 +14,10 @@ A standalone web player inspired by the screenshot layout: no framework, no buil
 - clickable playlist track selection
 - customization through JavaScript options and CSS custom properties
 - ready-to-run demo in `index.html`
+
+## Live Demo
+
+https://esposito-cloud.github.io/mixtape-player/
 - production-ready build output in `dist/`
 
 ## Quick Start

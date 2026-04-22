@@ -4,7 +4,7 @@
   "description": "Embeddable web player with waveform, drag-and-drop uploads, remote audio support, and customizable presets.",
   "license": "MIT",
   "author": "Simone Esposito <simone@esposito.cloud>",
-  "homepage": "https://github.com/esposito-cloud/mixtape-player",
+  "homepage": "https://esposito-cloud.github.io/mixtape-player/",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/esposito-cloud/mixtape-player.git"
