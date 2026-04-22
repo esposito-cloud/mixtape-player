@@ -677,6 +677,8 @@ const DEFAULT_CONFIG = {
   allowFileDrop: true,
   replaceOnDrop: false,
   dropLabel: "Drop audio files here",
+  autoScrollActiveTrack: true,
+  tracklistMaxHeight: "",
   showCover: true,
   showArtist: true,
   showBrand: true,
@@ -838,10 +840,7 @@ class MixtapePlayerElement extends HTMLElement {
       this.emitState("repeatchange");
     });
     this.refs.menuBtn.addEventListener("click", () => {
-      this.refs.tracks.querySelector('[aria-current="true"]')?.scrollIntoView({
-        block: "nearest",
-        behavior: "smooth",
-      });
+      this.scrollActiveTrackIntoView({ behavior: "smooth" });
     });
 
     this.addEventListener("dragenter", (event) => {
@@ -988,6 +987,7 @@ class MixtapePlayerElement extends HTMLElement {
     this.audio.volume = clampVolume(merged.volume);
 
     this.applyTheme(this.config.theme);
+    this.applyConfigStyles();
     this.currentTrackIndex = clampIndex(this.config.initialTrack, this.config.tracks.length);
     this.isReady = true;
     this.render();
@@ -1008,6 +1008,7 @@ class MixtapePlayerElement extends HTMLElement {
   setTheme(theme = {}) {
     this.applyTheme(theme);
     this.config.theme = { ...this.config.theme, ...theme };
+    this.applyConfigStyles();
   }
 
   setTracks(tracks = [], options = {}) {
@@ -1213,6 +1214,15 @@ class MixtapePlayerElement extends HTMLElement {
     });
   }
 
+  applyConfigStyles() {
+    const tracklistMaxHeight = normalizeCssSize(this.config.tracklistMaxHeight);
+    if (tracklistMaxHeight) {
+      this.style.setProperty("--mixtape-tracklist-max-height", tracklistMaxHeight);
+    } else {
+      this.style.removeProperty("--mixtape-tracklist-max-height");
+    }
+  }
+
   getCurrentTrack() {
     return this.config.tracks[this.currentTrackIndex] || null;
   }
@@ -1302,6 +1312,30 @@ class MixtapePlayerElement extends HTMLElement {
       });
 
       this.refs.tracks.appendChild(button);
+    });
+
+    if (this.config.autoScrollActiveTrack) {
+      this.scrollActiveTrackIntoView();
+    }
+  }
+
+  scrollActiveTrackIntoView(options = {}) {
+    if (!this.config.showTracklist) {
+      return;
+    }
+
+    const activeTrack = this.refs.tracks.querySelector('[aria-current="true"]');
+    if (!activeTrack) {
+      return;
+    }
+
+    const behavior = options.behavior || "auto";
+    requestAnimationFrame(() => {
+      activeTrack.scrollIntoView({
+        block: "nearest",
+        inline: "nearest",
+        behavior,
+      });
     });
   }
 
@@ -1694,6 +1728,27 @@ function parseNumberAttribute(value, fallback) {
   return Number.isFinite(parsed) ? parsed : fallback;
 }
 
+function normalizeCssSize(value) {
+  if (value == null || value === "") {
+    return "";
+  }
+
+  if (typeof value === "number" && Number.isFinite(value)) {
+    return `${value}px`;
+  }
+
+  const stringValue = String(value).trim();
+  if (!stringValue) {
+    return "";
+  }
+
+  if (/^\d+(\.\d+)?$/.test(stringValue)) {
+    return `${stringValue}px`;
+  }
+
+  return stringValue;
+}
+
 function buildConfigFromScriptTag(script) {
   const config = parseJSONAttribute(script.dataset.config, {}) || {};
   const tracks = parseJSONAttribute(script.dataset.tracks, config.tracks);
@@ -1714,6 +1769,7 @@ function buildConfigFromScriptTag(script) {
     shuffle: parseBooleanAttribute(script.dataset.shuffle, config.shuffle),
     allowFileDrop: parseBooleanAttribute(script.dataset.allowFileDrop, config.allowFileDrop ?? true),
     replaceOnDrop: parseBooleanAttribute(script.dataset.replaceOnDrop, config.replaceOnDrop),
+    autoScrollActiveTrack: parseBooleanAttribute(script.dataset.autoScrollActiveTrack, config.autoScrollActiveTrack ?? true),
     showCover: parseBooleanAttribute(script.dataset.showCover, config.showCover ?? true),
     showArtist: parseBooleanAttribute(script.dataset.showArtist, config.showArtist ?? true),
     showBrand: parseBooleanAttribute(script.dataset.showBrand, config.showBrand ?? true),
@@ -1732,6 +1788,7 @@ function buildConfigFromScriptTag(script) {
     volume: parseNumberAttribute(script.dataset.volume, config.volume ?? 1),
     repeatMode: script.dataset.repeatMode ?? config.repeatMode,
     dropLabel: script.dataset.dropLabel ?? config.dropLabel,
+    tracklistMaxHeight: script.dataset.tracklistMaxHeight ?? config.tracklistMaxHeight,
     theme,
     tracks,
   };

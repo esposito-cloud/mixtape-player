@@ -156,6 +156,8 @@ If `allowFileDrop` is `true`, you can drag audio files directly onto the player 
   allowFileDrop: true,
   replaceOnDrop: false,
   dropLabel: "Drop audio files here",
+  autoScrollActiveTrack: true,
+  tracklistMaxHeight: 440,
   showCover: true,
   showArtist: true,
   showBrand: true,
@@ -203,6 +205,8 @@ mixtape-player.custom-theme {
 }
 ```
 
+`tracklistMaxHeight` can also be set through JavaScript or `data-tracklist-max-height`, using either a number (`440`) or any valid CSS size (`"28rem"`, `"50vh"`).
+
 ## JavaScript API
 
 - `element.load(config)` updates the full player configuration
@@ -237,6 +241,8 @@ mixtape-player.custom-theme {
 - `showVolume`
 - `showMenu`
 - `showTracklist`
+- `autoScrollActiveTrack`
+- `tracklistMaxHeight`
 
 ## Emitted Events
 
