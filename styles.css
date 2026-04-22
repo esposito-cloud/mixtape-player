@@ -43,7 +43,7 @@ body::before {
 
 .page {
   position: relative;
-  width: min(1260px, calc(100vw - 40px));
+  width: min(1180px, calc(100vw - 40px));
   margin: 0 auto;
   padding: 44px 0 84px;
 }
@@ -102,6 +102,58 @@ body::before {
 mixtape-player {
   display: block;
   margin-top: 14px;
+}
+
+.hero-demo {
+  display: grid;
+  gap: 18px;
+  margin-top: 10px;
+}
+
+.hero-demo-copy {
+  max-width: 760px;
+}
+
+.hero-demo-copy h2 {
+  margin: 0;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(2rem, 3vw, 3rem);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+}
+
+.hero-demo-copy p:last-child {
+  margin-top: 12px;
+}
+
+.player-frame {
+  display: block;
+}
+
+.player-frame-feature {
+  max-width: 960px;
+  margin: 0 auto;
+  --mixtape-radius: 26px;
+  --mixtape-cover-radius: 22px;
+  --mixtape-tracklist-max-height: 360px;
+}
+
+.player-frame-variant {
+  --mixtape-radius: 24px;
+  --mixtape-cover-radius: 20px;
+  --mixtape-tracklist-max-height: 240px;
+}
+
+.player-frame-full {
+  max-width: 760px;
+}
+
+.player-frame-compact {
+  max-width: 620px;
+}
+
+.player-frame-minimal {
+  max-width: 560px;
 }
 
 .feature-grid,
@@ -222,9 +274,38 @@ mixtape-player {
   padding: 22px;
 }
 
+.usage-head {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.usage-kicker {
+  margin: 0 0 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.72rem;
+  color: rgba(16, 32, 28, 0.58);
+}
+
 .usage-card h3 {
   font-size: 1.55rem;
-  margin-bottom: 14px;
+  margin: 0;
+}
+
+.usage-copy {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: var(--page-muted);
+}
+
+.usage-card mixtape-player {
+  margin: 0 0 18px;
+}
+
+.usage-card-classic {
+  align-content: start;
 }
 
 pre {
@@ -256,7 +337,7 @@ pre {
 
 @media (max-width: 840px) {
   .page {
-    width: min(100vw - 24px, 1260px);
+    width: min(100vw - 24px, 1180px);
     padding-top: 24px;
   }
 
@@ -268,6 +349,13 @@ pre {
 
   .intro h1,
   .section-head h2 {
+    max-width: none;
+  }
+
+  .player-frame-feature,
+  .player-frame-full,
+  .player-frame-compact,
+  .player-frame-minimal {
     max-width: none;
   }
 }

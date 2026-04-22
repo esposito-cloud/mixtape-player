@@ -28,7 +28,16 @@
         </div>
       </section>
 
-      <mixtape-player id="demo-player"></mixtape-player>
+      <section class="hero-demo">
+        <div class="hero-demo-copy">
+          <p class="card-kicker">Featured Demo</p>
+          <h2>A tighter default footprint, still built for full playlists.</h2>
+          <p>
+            The lead example below uses the full preset in a more compact frame, so the player feels easier to embed inside a real page rather than taking over the entire layout.
+          </p>
+        </div>
+        <mixtape-player id="demo-player" class="player-frame player-frame-feature"></mixtape-player>
+      </section>
 
       <div class="feature-grid">
         <section class="tool-card">
@@ -59,50 +68,40 @@
 
       <section class="snippet-section" id="snippets">
         <div class="section-head">
-          <p class="card-kicker">Embedding</p>
-          <h2>Use the full player or start from a lighter preset.</h2>
+          <p class="card-kicker">Preset Gallery</p>
+          <h2>See each player type live, then copy the snippet under it.</h2>
           <p>
-            The same runtime can ship as a full listening surface, a compact embed, or a minimal single-track player.
+            The same runtime can ship as a full listening surface, a compact embed, or a minimal single-track player. Each example below is mounted directly on the page.
           </p>
         </div>
 
         <div class="usage-grid">
           <section class="usage-card">
-            <h3>Single Snippet</h3>
+            <div class="usage-head">
+              <div>
+                <p class="usage-kicker">Full Variant</p>
+                <h3>Editorial player with tracklist</h3>
+              </div>
+              <p class="usage-copy">Use when the playlist is part of the page narrative and you want the complete listening surface.</p>
+            </div>
+            <mixtape-player id="full-player" class="player-frame player-frame-variant player-frame-full"></mixtape-player>
             <pre><code>&lt;script
   src="https://your-domain.com/dist/mixtape-player.min.js"
   data-mixtape-widget
   data-variant="full"
-  data-config='{"title":"Northbound Signals","artist":"Mira Vale","tracks":[{"title":"Signal Bloom","src":"/audio/signal-bloom.mp3"},{"title":"Night Ferry","src":"https://example.com/audio/night-ferry.ogg"}]}'
+  data-config='{"title":"Northbound Signals","artist":"Mira Vale","cover":"https://your-domain.com/assets/northbound-signals-cover.svg","tracks":[{"title":"Signal Bloom","src":"/audio/signal-bloom.mp3"},{"title":"Night Ferry","src":"https://example.com/audio/night-ferry.ogg"}]}'
 &gt;&lt;/script&gt;</code></pre>
           </section>
 
           <section class="usage-card">
-            <h3>Classic Mount</h3>
-            <pre><code>&lt;script src="dist/mixtape-player.min.js"&gt;&lt;/script&gt;
-&lt;mixtape-player id="player"&gt;&lt;/mixtape-player&gt;
-&lt;script&gt;
-  const player = document.querySelector("#player");
-  player.load({
-    title: "Northbound Signals",
-    artist: "Mira Vale",
-    tracks: [{ title: "Signal Bloom", src: "/audio/signal-bloom.mp3" }]
-  });
-&lt;/script&gt;</code></pre>
-          </section>
-
-          <section class="usage-card">
-            <h3>Minimal Variant</h3>
-            <pre><code>&lt;script
-  src="https://your-domain.com/dist/mixtape-player.min.js"
-  data-mixtape-widget
-  data-variant="minimal"
-  data-config='{"title":"Signal Bloom","artist":"Mira Vale","tracks":[{"title":"Signal Bloom","src":"/audio/signal-bloom.mp3"}]}'
-&gt;&lt;/script&gt;</code></pre>
-          </section>
-
-          <section class="usage-card">
-            <h3>Compact Variant</h3>
+            <div class="usage-head">
+              <div>
+                <p class="usage-kicker">Compact Variant</p>
+                <h3>Smaller footprint for embeds</h3>
+              </div>
+              <p class="usage-copy">A middle ground for article bodies, side modules, or release pages that need less interface chrome.</p>
+            </div>
+            <mixtape-player id="compact-player" class="player-frame player-frame-variant player-frame-compact"></mixtape-player>
             <pre><code>&lt;script
   src="https://your-domain.com/dist/mixtape-player.min.js"
   data-mixtape-widget
@@ -111,6 +110,44 @@
   data-config='{"title":"Night Ferry","artist":"Mira Vale","tracks":[{"title":"Night Ferry","src":"/audio/night-ferry.mp3"}]}'
 &gt;&lt;/script&gt;</code></pre>
           </section>
+
+          <section class="usage-card">
+            <div class="usage-head">
+              <div>
+                <p class="usage-kicker">Minimal Variant</p>
+                <h3>Single-track and lightweight</h3>
+              </div>
+              <p class="usage-copy">Strip it back for product pages, headers, or focused single-release embeds.</p>
+            </div>
+            <mixtape-player id="minimal-player" class="player-frame player-frame-variant player-frame-minimal"></mixtape-player>
+            <pre><code>&lt;script
+  src="https://your-domain.com/dist/mixtape-player.min.js"
+  data-mixtape-widget
+  data-variant="minimal"
+  data-config='{"title":"Terminal Glow","artist":"Mira Vale","tracks":[{"title":"Terminal Glow","src":"/audio/terminal-glow.mp3"}]}'
+&gt;&lt;/script&gt;</code></pre>
+          </section>
+
+          <section class="usage-card usage-card-classic">
+            <div class="usage-head">
+              <div>
+                <p class="usage-kicker">Classic Mount</p>
+                <h3>Programmatic setup with JavaScript</h3>
+              </div>
+              <p class="usage-copy">Use the custom element directly when you want to load config in your own scripts instead of inline JSON.</p>
+            </div>
+            <pre><code>&lt;script src="dist/mixtape-player.min.js"&gt;&lt;/script&gt;
+&lt;mixtape-player id="player"&gt;&lt;/mixtape-player&gt;
+&lt;script&gt;
+  const player = document.querySelector("#player");
+  player.load({
+    variant: "full",
+    title: "Northbound Signals",
+    artist: "Mira Vale",
+    tracks: [{ title: "Signal Bloom", src: "/audio/signal-bloom.mp3" }]
+  });
+&lt;/script&gt;</code></pre>
+          </section>
         </div>
       </section>
     </main>
@@ -118,6 +155,30 @@
     <script src="./mixtape-player.js"></script>
     <script>
       const player = document.querySelector("#demo-player");
+      const fullPlayer = document.querySelector("#full-player");
+      const compactPlayer = document.querySelector("#compact-player");
+      const minimalPlayer = document.querySelector("#minimal-player");
+
+      const playlist = [
+        { title: "Signal Bloom", artist: "Mira Vale", src: "./assets/demo-tone-1.wav", duration: "00:36" },
+        { title: "Night Ferry", artist: "Mira Vale", src: "./assets/demo-tone-2.wav", duration: "00:44" },
+        { title: "Glass Receiver", artist: "Mira Vale", src: "./assets/demo-tone-3.wav", duration: "00:39" },
+        { title: "Low Orbit", artist: "Mira Vale", src: "./assets/demo-tone-4.wav", duration: "00:52" },
+        { title: "Static Garden", artist: "Mira Vale", src: "./assets/demo-tone-5.wav", duration: "00:47" },
+        { title: "Terminal Glow", artist: "Mira Vale", src: "./assets/demo-tone-6.wav", duration: "00:41" }
+      ];
+
+      const sharedTheme = {
+        "--mixtape-bg": "#102a24",
+        "--mixtape-panel-bg": "#1a4338",
+        "--mixtape-list-bg": "#0b1f1b",
+        "--mixtape-text": "#f4ecdc",
+        "--mixtape-muted": "rgba(235, 227, 208, 0.72)",
+        "--mixtape-accent": "#f1d28a",
+        "--mixtape-accent-strong": "#ffd875",
+        "--mixtape-shadow": "0 36px 92px rgba(5, 18, 15, 0.3)",
+        "--mixtape-font": "\"Space Grotesk\", \"Avenir Next\", sans-serif"
+      };
 
       player.load({
         title: "Northbound Signals",
@@ -127,25 +188,43 @@
         shuffle: false,
         repeatMode: "off",
         volume: 0.88,
-        tracks: [
-          { title: "Signal Bloom", artist: "Mira Vale", src: "./assets/demo-tone-1.wav", duration: "00:36" },
-          { title: "Night Ferry", artist: "Mira Vale", src: "./assets/demo-tone-2.wav", duration: "00:44" },
-          { title: "Glass Receiver", artist: "Mira Vale", src: "./assets/demo-tone-3.wav", duration: "00:39" },
-          { title: "Low Orbit", artist: "Mira Vale", src: "./assets/demo-tone-4.wav", duration: "00:52" },
-          { title: "Static Garden", artist: "Mira Vale", src: "./assets/demo-tone-5.wav", duration: "00:47" },
-          { title: "Terminal Glow", artist: "Mira Vale", src: "./assets/demo-tone-6.wav", duration: "00:41" }
-        ],
-        theme: {
-          "--mixtape-bg": "#102a24",
-          "--mixtape-panel-bg": "#1a4338",
-          "--mixtape-list-bg": "#0b1f1b",
-          "--mixtape-text": "#f4ecdc",
-          "--mixtape-muted": "rgba(235, 227, 208, 0.72)",
-          "--mixtape-accent": "#f1d28a",
-          "--mixtape-accent-strong": "#ffd875",
-          "--mixtape-shadow": "0 36px 92px rgba(5, 18, 15, 0.3)",
-          "--mixtape-font": "\"Space Grotesk\", \"Avenir Next\", sans-serif"
-        }
+        tracks: playlist,
+        theme: sharedTheme
+      });
+
+      fullPlayer.load({
+        variant: "full",
+        title: "Northbound Signals",
+        artist: "Mira Vale",
+        cover: "./assets/northbound-signals-cover.svg",
+        coverCaption: "Full preset",
+        volume: 0.82,
+        tracks: playlist,
+        theme: sharedTheme
+      });
+
+      compactPlayer.load({
+        variant: "compact",
+        title: "Night Ferry",
+        artist: "Mira Vale",
+        cover: "./assets/northbound-signals-cover.svg",
+        coverCaption: "Compact preset",
+        volume: 0.82,
+        initialTrack: 1,
+        tracks: playlist.slice(0, 3),
+        theme: sharedTheme
+      });
+
+      minimalPlayer.load({
+        variant: "minimal",
+        title: "Terminal Glow",
+        artist: "Mira Vale",
+        cover: "./assets/northbound-signals-cover.svg",
+        coverCaption: "Minimal preset",
+        volume: 0.82,
+        initialTrack: 0,
+        tracks: [playlist[5]],
+        theme: sharedTheme
       });
 
       document.querySelector("#local-files").addEventListener("change", (event) => {
