@@ -3,140 +3,148 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Embeddable Web Player</title>
+    <title>Mixtape Player</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <main class="page">
       <section class="intro">
-        <p class="eyebrow">Standalone Web Component</p>
-        <h1>Embeddable web player with a single snippet and direct drag and drop</h1>
+        <p class="eyebrow">Mixtape Player</p>
+        <h1>Embeddable audio player for polished mixes, broadcasts, and story-led releases.</h1>
         <p class="lede">
-          A vanilla JavaScript player with no framework and no build step.
-          Use it with local files dropped straight onto the player or with remote URLs, then embed it anywhere with a single snippet.
+          A single-file web component with waveform, drag and drop, remote sources, and UI presets.
+          Designed to feel editorial rather than generic, with enough flexibility to sit inside almost any site.
         </p>
+        <div class="meta-strip">
+          <span>Single-file runtime</span>
+          <span>Local + remote audio</span>
+          <span>Minimal, compact, full</span>
+        </div>
       </section>
 
       <mixtape-player id="demo-player"></mixtape-player>
 
-      <section class="tool-card">
-        <div>
-          <h2>Drag and Drop on the Player</h2>
-          <p>Drag MP3, WAV, OGG, or M4A files directly onto the widget and they will be added to the playlist immediately.</p>
-        </div>
-        <label class="file-picker">
-          <span>Or select audio files</span>
-          <input id="local-files" type="file" accept="audio/*" multiple />
-        </label>
-      </section>
+      <div class="feature-grid">
+        <section class="tool-card">
+          <div>
+            <p class="card-kicker">Playlist Input</p>
+            <h2>Drop a set straight onto the player.</h2>
+            <p>Drag MP3, WAV, OGG, or M4A files onto the player to build a playlist on the fly.</p>
+          </div>
+          <label class="file-picker">
+            <span>Select audio files</span>
+            <input id="local-files" type="file" accept="audio/*" multiple />
+          </label>
+        </section>
 
-      <section class="tool-card">
-        <div>
-          <h2>Add a Remote URL</h2>
-          <p>Paste a link to a remote audio file. If the server allows CORS, the player will render the real waveform; otherwise it falls back gracefully.</p>
-        </div>
-        <form id="remote-form" class="remote-form">
-          <input id="remote-url" type="url" placeholder="https://example.com/audio/track.mp3" required />
-          <input id="remote-title" type="text" placeholder="Optional title" />
-          <button type="submit">Add URL</button>
-        </form>
-      </section>
+        <section class="tool-card">
+          <div>
+            <p class="card-kicker">Remote Sources</p>
+            <h2>Point it at a hosted track.</h2>
+            <p>Paste a direct audio URL. If the source allows CORS, the player draws the real waveform automatically.</p>
+          </div>
+          <form id="remote-form" class="remote-form">
+            <input id="remote-url" type="url" placeholder="https://example.com/audio/track.mp3" required />
+            <input id="remote-title" type="text" placeholder="Track title (optional)" />
+            <button type="submit">Add track</button>
+          </form>
+        </section>
+      </div>
 
-      <section class="usage-card">
-        <h2>Single Snippet</h2>
-        <pre><code>&lt;script
-  src="https://your-domain.com/mixtape-player.js"
+      <section class="snippet-section" id="snippets">
+        <div class="section-head">
+          <p class="card-kicker">Embedding</p>
+          <h2>Use the full player or start from a lighter preset.</h2>
+          <p>
+            The same runtime can ship as a full listening surface, a compact embed, or a minimal single-track player.
+          </p>
+        </div>
+
+        <div class="usage-grid">
+          <section class="usage-card">
+            <h3>Single Snippet</h3>
+            <pre><code>&lt;script
+  src="https://your-domain.com/dist/mixtape-player.min.js"
   data-mixtape-widget
   data-variant="full"
-  data-config='{"title":"My Playlist","artist":"Various Artists","tracks":[{"title":"Intro","src":"/audio/intro.mp3"},{"title":"Remote Track","src":"https://example.com/music/track.ogg"}]}'
+  data-config='{"title":"Northbound Signals","artist":"Mira Vale","tracks":[{"title":"Signal Bloom","src":"/audio/signal-bloom.mp3"},{"title":"Night Ferry","src":"https://example.com/audio/night-ferry.ogg"}]}'
 &gt;&lt;/script&gt;</code></pre>
-      </section>
+          </section>
 
-      <section class="usage-card">
-        <h2>Classic Mode</h2>
-        <pre><code>&lt;script src="mixtape-player.js"&gt;&lt;/script&gt;
+          <section class="usage-card">
+            <h3>Classic Mount</h3>
+            <pre><code>&lt;script src="dist/mixtape-player.min.js"&gt;&lt;/script&gt;
 &lt;mixtape-player id="player"&gt;&lt;/mixtape-player&gt;
 &lt;script&gt;
   const player = document.querySelector("#player");
   player.load({
-    title: "My Playlist",
-    artist: "Various Artists",
-    tracks: [{ title: "Intro", src: "/audio/intro.mp3" }]
+    title: "Northbound Signals",
+    artist: "Mira Vale",
+    tracks: [{ title: "Signal Bloom", src: "/audio/signal-bloom.mp3" }]
   });
 &lt;/script&gt;</code></pre>
-      </section>
+          </section>
 
-      <section class="usage-card">
-        <h2>Minimal Variant</h2>
-        <pre><code>&lt;script
-  src="https://your-domain.com/mixtape-player.js"
+          <section class="usage-card">
+            <h3>Minimal Variant</h3>
+            <pre><code>&lt;script
+  src="https://your-domain.com/dist/mixtape-player.min.js"
   data-mixtape-widget
   data-variant="minimal"
-  data-config='{"title":"Single Track","artist":"Demo","tracks":[{"title":"Intro","src":"/audio/intro.mp3"}]}'
+  data-config='{"title":"Signal Bloom","artist":"Mira Vale","tracks":[{"title":"Signal Bloom","src":"/audio/signal-bloom.mp3"}]}'
 &gt;&lt;/script&gt;</code></pre>
-      </section>
+          </section>
 
-      <section class="usage-card">
-        <h2>Compact Variant with Override</h2>
-        <pre><code>&lt;script
-  src="https://your-domain.com/mixtape-player.js"
+          <section class="usage-card">
+            <h3>Compact Variant</h3>
+            <pre><code>&lt;script
+  src="https://your-domain.com/dist/mixtape-player.min.js"
   data-mixtape-widget
   data-variant="compact"
   data-show-volume="false"
-  data-config='{"title":"Compact Player","artist":"Demo","tracks":[{"title":"Intro","src":"/audio/intro.mp3"}]}'
+  data-config='{"title":"Night Ferry","artist":"Mira Vale","tracks":[{"title":"Night Ferry","src":"/audio/night-ferry.mp3"}]}'
 &gt;&lt;/script&gt;</code></pre>
+          </section>
+        </div>
       </section>
     </main>
 
     <script src="./mixtape-player.js"></script>
     <script>
-      const cassetteCover = `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(`
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900">
-          <defs>
-            <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#ff4130" />
-              <stop offset="100%" stop-color="#a30000" />
-            </linearGradient>
-          </defs>
-          <rect width="900" height="900" rx="82" fill="url(#bg)" />
-          <rect x="140" y="210" width="620" height="460" rx="34" fill="#2a3035" />
-          <rect x="178" y="248" width="544" height="178" rx="18" fill="#f2f3f2" />
-          <rect x="198" y="278" width="506" height="48" rx="12" fill="#dce4e8" />
-          <circle cx="300" cy="500" r="78" fill="#641919" />
-          <circle cx="600" cy="500" r="78" fill="#641919" />
-          <circle cx="300" cy="500" r="30" fill="#f4f0ed" />
-          <circle cx="600" cy="500" r="30" fill="#f4f0ed" />
-          <text x="450" y="316" text-anchor="middle" font-family="Arial, sans-serif" font-size="42" fill="#4b6472">LOCAL + REMOTE</text>
-          <text x="450" y="558" text-anchor="middle" font-family="Arial, sans-serif" font-size="38" fill="#e8d8cf">WEB PLAYER</text>
-        </svg>
-      `)}`;
-
       const player = document.querySelector("#demo-player");
 
       player.load({
-        title: "Mixtape Player Demo",
-        artist: "Local and Remote Ready",
-        cover: cassetteCover,
-        coverCaption: "Web player demo",
+        title: "Northbound Signals",
+        artist: "Mira Vale",
+        cover: "./assets/northbound-signals-cover.svg",
+        coverCaption: "Late-evening signal pop, curated for the road.",
         shuffle: false,
         repeatMode: "off",
-        volume: 0.9,
+        volume: 0.88,
         tracks: [
-          { title: "Ursa Major", artist: "Local Demo", src: "./assets/demo-tone-1.wav" },
-          { title: "Ursa Minor", artist: "Local Demo", src: "./assets/demo-tone-2.wav" },
-          { title: "Givers and Takers", artist: "Local Demo", src: "./assets/demo-tone-3.wav" },
-          { title: "Garmonbozia", artist: "Local Demo", src: "./assets/demo-tone-4.wav" },
-          { title: "Jaws of Life", artist: "Local Demo", src: "./assets/demo-tone-5.wav" },
-          { title: "Glass Jaw", artist: "Local Demo", src: "./assets/demo-tone-6.wav" }
+          { title: "Signal Bloom", artist: "Mira Vale", src: "./assets/demo-tone-1.wav", duration: "00:36" },
+          { title: "Night Ferry", artist: "Mira Vale", src: "./assets/demo-tone-2.wav", duration: "00:44" },
+          { title: "Glass Receiver", artist: "Mira Vale", src: "./assets/demo-tone-3.wav", duration: "00:39" },
+          { title: "Low Orbit", artist: "Mira Vale", src: "./assets/demo-tone-4.wav", duration: "00:52" },
+          { title: "Static Garden", artist: "Mira Vale", src: "./assets/demo-tone-5.wav", duration: "00:47" },
+          { title: "Terminal Glow", artist: "Mira Vale", src: "./assets/demo-tone-6.wav", duration: "00:41" }
         ],
         theme: {
-          "--mixtape-bg": "#d92323",
-          "--mixtape-panel-bg": "#b60000",
-          "--mixtape-list-bg": "#930000",
-          "--mixtape-text": "#fff0eb",
-          "--mixtape-muted": "rgba(255, 230, 221, 0.82)",
-          "--mixtape-accent": "#fff7f5",
-          "--mixtape-shadow": "0 32px 80px rgba(92, 0, 0, 0.28)"
+          "--mixtape-bg": "#102a24",
+          "--mixtape-panel-bg": "#1a4338",
+          "--mixtape-list-bg": "#0b1f1b",
+          "--mixtape-text": "#f4ecdc",
+          "--mixtape-muted": "rgba(235, 227, 208, 0.72)",
+          "--mixtape-accent": "#f1d28a",
+          "--mixtape-accent-strong": "#ffd875",
+          "--mixtape-shadow": "0 36px 92px rgba(5, 18, 15, 0.3)",
+          "--mixtape-font": "\"Space Grotesk\", \"Avenir Next\", sans-serif"
         }
       });
 
@@ -145,7 +153,7 @@
         if (!files || files.length === 0) {
           return;
         }
-        player.loadFiles(files, { append: true, playNew: false });
+        player.loadFiles(files, { append: true, playNew: false, artist: "Imported Audio" });
         event.target.value = "";
       });
 
@@ -161,7 +169,7 @@
         player.addTracks([
           {
             title: titleInput.value.trim() || undefined,
-            artist: "Remote Source",
+            artist: "Imported Source",
             src: url
           }
         ]);

@@ -3,18 +3,18 @@ const MIXTAPE_PLAYER_TEMPLATE = document.createElement("template");
 MIXTAPE_PLAYER_TEMPLATE.innerHTML = `
   <style>
     :host {
-      --mixtape-bg: #8d0000;
-      --mixtape-panel-bg: #b00000;
-      --mixtape-list-bg: #990000;
-      --mixtape-text: #fff3f0;
-      --mixtape-muted: rgba(255, 232, 226, 0.82);
+      --mixtape-bg: #102924;
+      --mixtape-panel-bg: #194237;
+      --mixtape-list-bg: #0b1e1a;
+      --mixtape-text: #f6efdf;
+      --mixtape-muted: rgba(236, 227, 208, 0.76);
       --mixtape-border: rgba(255, 255, 255, 0.08);
-      --mixtape-accent: #ffffff;
-      --mixtape-accent-strong: #ffcfb9;
-      --mixtape-shadow: 0 30px 70px rgba(77, 0, 0, 0.32);
-      --mixtape-radius: 28px;
+      --mixtape-accent: #f0d28d;
+      --mixtape-accent-strong: #ffd97b;
+      --mixtape-shadow: 0 30px 70px rgba(6, 19, 15, 0.32);
+      --mixtape-radius: 30px;
       --mixtape-cover-radius: 24px;
-      --mixtape-font: "Avenir Next", "Segoe UI", sans-serif;
+      --mixtape-font: "Space Grotesk", "Avenir Next", sans-serif;
       display: block;
       font-family: var(--mixtape-font);
       color: var(--mixtape-text);
@@ -39,7 +39,7 @@ MIXTAPE_PLAYER_TEMPLATE.innerHTML = `
     .shell {
       background:
         radial-gradient(circle at top left, rgba(255, 255, 255, 0.09), transparent 34%),
-        radial-gradient(circle at bottom right, rgba(75, 0, 0, 0.26), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(8, 20, 17, 0.26), transparent 28%),
         var(--mixtape-bg);
       border-radius: var(--mixtape-radius);
       box-shadow: var(--mixtape-shadow);
@@ -49,7 +49,7 @@ MIXTAPE_PLAYER_TEMPLATE.innerHTML = `
 
     .shell[data-dragover="true"] {
       box-shadow:
-        0 30px 70px rgba(77, 0, 0, 0.32),
+        0 30px 70px rgba(6, 19, 15, 0.32),
         0 0 0 2px rgba(255, 255, 255, 0.4) inset;
     }
 
@@ -59,7 +59,7 @@ MIXTAPE_PLAYER_TEMPLATE.innerHTML = `
       display: grid;
       place-items: center;
       border-radius: calc(var(--mixtape-radius) - 8px);
-      background: rgba(66, 0, 0, 0.55);
+      background: rgba(12, 30, 26, 0.68);
       border: 2px dashed rgba(255, 255, 255, 0.42);
       color: var(--mixtape-accent);
       text-align: center;
@@ -134,7 +134,7 @@ MIXTAPE_PLAYER_TEMPLATE.innerHTML = `
       aspect-ratio: 1 / 1;
       object-fit: cover;
       border-radius: var(--mixtape-cover-radius);
-      box-shadow: 0 18px 32px rgba(103, 0, 0, 0.28);
+      box-shadow: 0 18px 32px rgba(7, 20, 17, 0.26);
       background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.14));
     }
 
@@ -222,7 +222,7 @@ MIXTAPE_PLAYER_TEMPLATE.innerHTML = `
       border-radius: 18px;
       background:
         linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.06)),
-        rgba(56, 0, 0, 0.18);
+        rgba(9, 24, 21, 0.22);
     }
 
     .progress {
@@ -277,7 +277,7 @@ MIXTAPE_PLAYER_TEMPLATE.innerHTML = `
       background: var(--mixtape-accent);
       color: var(--mixtape-panel-bg);
       border-radius: 999px;
-      box-shadow: 0 18px 30px rgba(89, 0, 0, 0.22);
+      box-shadow: 0 18px 30px rgba(6, 19, 15, 0.18);
     }
 
     .play-btn svg {
@@ -1515,21 +1515,21 @@ function createFallbackCover(title, artist) {
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900">
       <defs>
         <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#ef3b2d" />
-          <stop offset="100%" stop-color="#910000" />
+          <stop offset="0%" stop-color="#f7efdc" />
+          <stop offset="100%" stop-color="#ebdcc0" />
         </linearGradient>
       </defs>
       <rect width="900" height="900" rx="92" fill="url(#bg)" />
-      <rect x="132" y="170" width="636" height="470" rx="34" fill="#1f2528" />
-      <rect x="166" y="206" width="568" height="176" rx="18" fill="#f2f3f4" />
-      <circle cx="294" cy="490" r="64" fill="#611313" />
-      <circle cx="606" cy="490" r="64" fill="#611313" />
-      <circle cx="294" cy="490" r="28" fill="#f3f1ee" />
-      <circle cx="606" cy="490" r="28" fill="#f3f1ee" />
-      <text x="450" y="290" font-family="Arial, sans-serif" font-size="42" text-anchor="middle" fill="#3c4f5a">${escapeHtml(
+      <rect x="132" y="170" width="636" height="560" rx="34" fill="#17362f" />
+      <rect x="132" y="170" width="320" height="560" rx="34" fill="#21453b" />
+      <circle cx="606" cy="304" r="94" fill="#efca74" />
+      <circle cx="606" cy="304" r="34" fill="#f7efdc" />
+      <path d="M216 604C296 554 377 550 454 572C530 594 575 630 664 630" fill="none" stroke="#f7efdc" stroke-width="16" stroke-linecap="round" />
+      <path d="M216 556C286 520 363 510 446 526C526 542 584 576 684 576" fill="none" stroke="#efca74" stroke-width="10" stroke-linecap="round" />
+      <text x="450" y="294" font-family="Arial, sans-serif" font-size="42" text-anchor="middle" fill="#173a31">${escapeHtml(
         title || "Mixtape"
       )}</text>
-      <text x="450" y="340" font-family="Arial, sans-serif" font-size="28" text-anchor="middle" fill="#6c6c6c">${escapeHtml(
+      <text x="450" y="340" font-family="Arial, sans-serif" font-size="28" text-anchor="middle" fill="#556760">${escapeHtml(
         artist || "Artist"
       )}</text>
     </svg>

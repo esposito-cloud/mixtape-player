@@ -125,10 +125,10 @@ If `allowFileDrop` is `true`, you can drag audio files directly onto the player 
   <script type="application/json">
     {
       "title": "Mixtape #2",
-      "artist": "Radical Face",
+      "artist": "Mira Vale",
       "tracks": [
-        { "title": "Ursa Major", "src": "/audio/ursa-major.mp3" },
-        { "title": "Remote Track", "src": "https://example.com/track.ogg" }
+        { "title": "Signal Bloom", "src": "/audio/signal-bloom.mp3" },
+        { "title": "Night Ferry", "src": "https://example.com/track.ogg" }
       ]
     }
   </script>
@@ -171,9 +171,9 @@ If `allowFileDrop` is `true`, you can drag audio files directly onto the player 
   showMenu: true,
   showTracklist: true,
   theme: {
-    "--mixtape-bg": "#d92323",
-    "--mixtape-panel-bg": "#b60000",
-    "--mixtape-list-bg": "#930000"
+    "--mixtape-bg": "#102a24",
+    "--mixtape-panel-bg": "#1a4338",
+    "--mixtape-list-bg": "#0b1f1b"
   },
   tracks: [
     {

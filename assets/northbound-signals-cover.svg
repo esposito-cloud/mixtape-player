@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" role="img" aria-labelledby="title desc">
+  <title id="title">Northbound Signals cover art</title>
+  <desc id="desc">Editorial abstract cover art with deep green blocks, warm sand tones, a gold disc, and geometric line work.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8f1e2" />
+      <stop offset="100%" stop-color="#efe3cb" />
+    </linearGradient>
+    <linearGradient id="panel" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#173a31" />
+      <stop offset="100%" stop-color="#0f2822" />
+    </linearGradient>
+  </defs>
+
+  <rect width="900" height="900" rx="88" fill="url(#bg)" />
+  <rect x="84" y="84" width="732" height="732" rx="52" fill="#f4ecd9" stroke="#173a31" stroke-width="6" />
+
+  <rect x="132" y="132" width="636" height="636" rx="32" fill="url(#panel)" />
+  <rect x="132" y="132" width="318" height="636" fill="#21493d" />
+  <rect x="450" y="132" width="318" height="318" fill="#18372f" />
+  <rect x="450" y="450" width="318" height="318" fill="#112720" />
+
+  <circle cx="611" cy="292" r="108" fill="#efca74" />
+  <circle cx="611" cy="292" r="42" fill="#f7edd8" />
+
+  <path d="M214 654C272 612 342 603 409 617C471 630 522 662 604 664" fill="none" stroke="#f4ecd9" stroke-width="18" stroke-linecap="round"/>
+  <path d="M214 600C279 563 348 549 431 560C501 570 565 604 640 603" fill="none" stroke="#efca74" stroke-width="10" stroke-linecap="round"/>
+
+  <rect x="192" y="188" width="164" height="164" rx="28" fill="#f4ecd9" />
+  <rect x="226" y="222" width="96" height="96" rx="18" fill="#21493d" />
+  <path d="M274 318V436" stroke="#f4ecd9" stroke-width="20" stroke-linecap="round" />
+  <path d="M214 434H412" stroke="#f4ecd9" stroke-width="10" stroke-linecap="round" opacity=".65" />
+
+  <g fill="#f4ecd9" font-family="'Space Grotesk', 'Avenir Next', sans-serif">
+    <text x="192" y="510" font-size="34" letter-spacing="8">NORTHBOUND</text>
+    <text x="192" y="560" font-size="34" letter-spacing="8">SIGNALS</text>
+  </g>
+
+  <g fill="#efca74" font-family="'Fraunces', Georgia, serif">
+    <text x="192" y="664" font-size="62">Mira Vale</text>
+  </g>
+
+  <line x1="450" y1="132" x2="450" y2="768" stroke="#f4ecd9" stroke-width="4" opacity=".22" />
+  <line x1="132" y1="450" x2="768" y2="450" stroke="#f4ecd9" stroke-width="4" opacity=".16" />
+</svg>
