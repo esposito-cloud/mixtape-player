@@ -199,6 +199,7 @@ mixtape-player.custom-theme {
   --mixtape-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
   --mixtape-radius: 30px;
   --mixtape-cover-radius: 22px;
+  --mixtape-tracklist-max-height: 440px;
 }
 ```
 

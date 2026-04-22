@@ -15,6 +15,7 @@ MIXTAPE_PLAYER_TEMPLATE.innerHTML = `
       --mixtape-radius: 30px;
       --mixtape-cover-radius: 24px;
       --mixtape-font: "Space Grotesk", "Avenir Next", sans-serif;
+      --mixtape-tracklist-max-height: 440px;
       display: block;
       font-family: var(--mixtape-font);
       color: var(--mixtape-text);
@@ -373,6 +374,33 @@ MIXTAPE_PLAYER_TEMPLATE.innerHTML = `
       padding: 10px 0 4px;
       background: var(--mixtape-list-bg);
       border-top: 1px solid var(--mixtape-border);
+      max-height: var(--mixtape-tracklist-max-height);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(240, 210, 141, 0.38) rgba(255, 255, 255, 0.06);
+    }
+
+    .list::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    .list::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 999px;
+    }
+
+    .list::-webkit-scrollbar-thumb {
+      background: rgba(240, 210, 141, 0.35);
+      border-radius: 999px;
+      border: 2px solid transparent;
+      background-clip: padding-box;
+    }
+
+    .list::-webkit-scrollbar-thumb:hover {
+      background: rgba(240, 210, 141, 0.52);
+      border: 2px solid transparent;
+      background-clip: padding-box;
     }
 
     .track {
@@ -500,6 +528,10 @@ MIXTAPE_PLAYER_TEMPLATE.innerHTML = `
       .track {
         padding: 16px 22px;
         grid-template-columns: 28px minmax(0, 1fr) auto;
+      }
+
+      .list {
+        max-height: min(52vh, var(--mixtape-tracklist-max-height));
       }
     }
   </style>
