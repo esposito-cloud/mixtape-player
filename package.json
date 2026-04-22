@@ -1,0 +1,42 @@
+{
+  "name": "mixtape-player",
+  "version": "0.1.0",
+  "description": "Embeddable web player with waveform, drag-and-drop uploads, remote audio support, and customizable presets.",
+  "license": "MIT",
+  "author": "Simone Esposito <simone@esposito.cloud>",
+  "homepage": "https://github.com/esposito-cloud/mixtape-player",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/esposito-cloud/mixtape-player.git"
+  },
+  "bugs": {
+    "url": "https://github.com/esposito-cloud/mixtape-player/issues"
+  },
+  "files": [
+    "dist",
+    "mixtape-player.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "type": "module",
+  "main": "dist/mixtape-player.js",
+  "exports": {
+    ".": "./dist/mixtape-player.js"
+  },
+  "scripts": {
+    "build": "node ./scripts/build.mjs",
+    "build:release": "npm run build"
+  },
+  "keywords": [
+    "audio-player",
+    "custom-element",
+    "drag-and-drop",
+    "embeddable-widget",
+    "javascript",
+    "waveform",
+    "web-component"
+  ],
+  "devDependencies": {
+    "terser": "^5.46.1"
+  }
+}

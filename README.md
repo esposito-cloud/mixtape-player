@@ -14,6 +14,7 @@ A standalone web player inspired by the screenshot layout: no framework, no buil
 - clickable playlist track selection
 - customization through JavaScript options and CSS custom properties
 - ready-to-run demo in `index.html`
+- production-ready build output in `dist/`
 
 ## Quick Start
 
@@ -21,11 +22,24 @@ Serve the project folder from any web server, then open the local URL in your br
 
 The demo should be loaded over HTTP rather than opened directly from the filesystem.
 
+## Release Files
+
+- Source runtime: `mixtape-player.js`
+- Production build: `dist/mixtape-player.js`
+- Minified production build: `dist/mixtape-player.min.js`
+
+To generate `dist/`, run:
+
+```bash
+npm install
+npm run build
+```
+
 ## Single Snippet
 
 ```html
 <script
-  src="https://your-domain.com/mixtape-player.js"
+  src="https://your-domain.com/dist/mixtape-player.min.js"
   data-mixtape-widget
   data-variant="full"
   data-config='{"title":"My Playlist","artist":"Various Artists","tracks":[{"title":"Intro","src":"/audio/intro.mp3"},{"title":"Remote Track","src":"https://example.com/audio/track.ogg"}]}'
@@ -38,7 +52,7 @@ This snippet automatically mounts the widget exactly where you place the script 
 
 ```html
 <script
-  src="https://your-domain.com/mixtape-player.js"
+  src="https://your-domain.com/dist/mixtape-player.min.js"
   data-mixtape-widget
   data-variant="minimal"
   data-config='{"title":"Single Track","artist":"Demo","tracks":[{"title":"Intro","src":"/audio/intro.mp3"}]}'
@@ -59,7 +73,7 @@ You can start from a `variant` and then refine it with individual `show*` flags.
 ## Basic Usage
 
 ```html
-<script src="/path/to/mixtape-player.js"></script>
+<script src="/path/to/dist/mixtape-player.min.js"></script>
 
 <mixtape-player id="player"></mixtape-player>
 
@@ -101,7 +115,7 @@ If `allowFileDrop` is `true`, you can drag audio files directly onto the player 
 ## Inline JSON Alternative
 
 ```html
-<script src="/path/to/mixtape-player.js"></script>
+<script src="/path/to/dist/mixtape-player.min.js"></script>
 
 <mixtape-player>
   <script type="application/json">
@@ -196,6 +210,11 @@ mixtape-player.custom-theme {
 - `window.MixtapePlayer.create(target, config)` creates and mounts the component
 - `window.MixtapePlayer.mountFromScript(script)` mounts the widget from a script tag with `data-mixtape-widget`
 - `window.MixtapePlayer.variants` exposes the available presets
+
+## Project Scripts
+
+- `npm run build` creates `dist/mixtape-player.js` and `dist/mixtape-player.min.js`
+- `npm run build:release` runs the same production build flow
 
 ## Available UI Toggles
 
