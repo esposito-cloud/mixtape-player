@@ -16,10 +16,10 @@
     <main class="page">
       <section class="intro">
         <p class="eyebrow">Mixtape Player</p>
-        <h1>Embeddable audio player for polished mixes, broadcasts, and story-led releases.</h1>
+        <h1>Embeddable audio player for full playlists, compact embeds, and single-track drops.</h1>
         <p class="lede">
-          A single-file web component with waveform, drag and drop, remote sources, and UI presets.
-          Designed to feel editorial rather than generic, with enough flexibility to sit inside almost any site.
+          A standalone web component with local files, remote audio, waveform rendering, and preset layouts.
+          Built to drop into real pages without bringing in a framework or a build step.
         </p>
         <div class="meta-strip">
           <span>Single-file runtime</span>
@@ -31,20 +31,27 @@
       <section class="hero-demo">
         <div class="hero-demo-copy">
           <p class="card-kicker">Featured Demo</p>
-          <h2>A tighter default footprint, still built for full playlists.</h2>
+          <h2>One full player, sized for a real page.</h2>
           <p>
-            The lead example below uses the full preset in a more compact frame, so the player feels easier to embed inside a real page rather than taking over the entire layout.
+            This example shows the full preset in a balanced frame, with the cover, controls, waveform, and tracklist all visible at once.
           </p>
         </div>
         <mixtape-player id="demo-player" class="player-frame player-frame-feature"></mixtape-player>
       </section>
 
-      <div class="feature-grid">
+      <section class="section-stack">
+        <div class="section-head section-head-simple">
+          <p class="card-kicker">Try It</p>
+          <h2>Add local files or a remote track.</h2>
+          <p>Two quick ways to test the player without editing code.</p>
+        </div>
+
+        <div class="feature-grid">
         <section class="tool-card">
           <div>
             <p class="card-kicker">Playlist Input</p>
-            <h2>Drop a set straight onto the player.</h2>
-            <p>Drag MP3, WAV, OGG, or M4A files onto the player to build a playlist on the fly.</p>
+            <h2>Drop files or pick them manually.</h2>
+            <p>Use MP3, WAV, OGG, or M4A files and append them straight into the featured player above.</p>
           </div>
           <label class="file-picker">
             <span>Select audio files</span>
@@ -55,8 +62,8 @@
         <section class="tool-card">
           <div>
             <p class="card-kicker">Remote Sources</p>
-            <h2>Point it at a hosted track.</h2>
-            <p>Paste a direct audio URL. If the source allows CORS, the player draws the real waveform automatically.</p>
+            <h2>Paste a hosted audio URL.</h2>
+            <p>If the source allows CORS, the waveform is extracted from the real audio. Otherwise the player falls back cleanly.</p>
           </div>
           <form id="remote-form" class="remote-form">
             <input id="remote-url" type="url" placeholder="https://example.com/audio/track.mp3" required />
@@ -64,68 +71,90 @@
             <button type="submit">Add track</button>
           </form>
         </section>
-      </div>
+        </div>
+      </section>
 
       <section class="snippet-section" id="snippets">
-        <div class="section-head">
+        <div class="section-head section-head-simple">
           <p class="card-kicker">Preset Gallery</p>
-          <h2>See each player type live, then copy the snippet under it.</h2>
+          <h2>Pick a preset, then copy the snippet.</h2>
           <p>
-            The same runtime can ship as a full listening surface, a compact embed, or a minimal single-track player. Each example below is mounted directly on the page.
+            Each card below shows the live player first and the embed code right next to it.
           </p>
         </div>
 
         <div class="usage-grid">
           <section class="usage-card usage-card-wide">
-            <div class="usage-head">
-              <div>
-                <p class="usage-kicker">Full Variant</p>
-                <h3>Editorial player with tracklist</h3>
+            <div class="usage-layout">
+              <div class="usage-preview">
+                <div class="usage-head">
+                  <div>
+                    <p class="usage-kicker">Full Variant</p>
+                    <h3>Editorial player with tracklist</h3>
+                  </div>
+                  <p class="usage-copy">Best for album pages, broadcasts, and mixes where the playlist is part of the experience.</p>
+                </div>
+                <mixtape-player id="full-player" class="player-frame player-frame-variant player-frame-full"></mixtape-player>
               </div>
-              <p class="usage-copy">Use when the playlist is part of the page narrative and you want the complete listening surface.</p>
-            </div>
-            <mixtape-player id="full-player" class="player-frame player-frame-variant player-frame-full"></mixtape-player>
-            <pre><code>&lt;script
+              <div class="usage-code">
+                <p class="usage-code-label">Snippet</p>
+                <pre><code>&lt;script
   src="https://your-domain.com/dist/mixtape-player.min.js"
   data-mixtape-widget
   data-variant="full"
   data-config='{"title":"Northbound Signals","artist":"Mira Vale","cover":"https://your-domain.com/assets/northbound-signals-cover.svg","tracks":[{"title":"Signal Bloom","src":"/audio/signal-bloom.mp3"},{"title":"Night Ferry","src":"https://example.com/audio/night-ferry.ogg"}]}'
 &gt;&lt;/script&gt;</code></pre>
+            </div>
+            </div>
           </section>
 
           <section class="usage-card">
-            <div class="usage-head">
-              <div>
-                <p class="usage-kicker">Compact Variant</p>
-                <h3>Smaller footprint for embeds</h3>
+            <div class="usage-layout">
+              <div class="usage-preview">
+                <div class="usage-head">
+                  <div>
+                    <p class="usage-kicker">Compact Variant</p>
+                    <h3>Smaller footprint for embeds</h3>
+                  </div>
+                  <p class="usage-copy">A lighter card for article bodies, side modules, and tighter layouts.</p>
+                </div>
+                <mixtape-player id="compact-player" class="player-frame player-frame-variant player-frame-compact"></mixtape-player>
               </div>
-              <p class="usage-copy">A middle ground for article bodies, side modules, or release pages that need less interface chrome.</p>
-            </div>
-            <mixtape-player id="compact-player" class="player-frame player-frame-variant player-frame-compact"></mixtape-player>
-            <pre><code>&lt;script
+              <div class="usage-code">
+                <p class="usage-code-label">Snippet</p>
+                <pre><code>&lt;script
   src="https://your-domain.com/dist/mixtape-player.min.js"
   data-mixtape-widget
   data-variant="compact"
   data-show-volume="false"
   data-config='{"title":"Night Ferry","artist":"Mira Vale","tracks":[{"title":"Night Ferry","src":"/audio/night-ferry.mp3"}]}'
 &gt;&lt;/script&gt;</code></pre>
+            </div>
+            </div>
           </section>
 
           <section class="usage-card">
-            <div class="usage-head">
-              <div>
-                <p class="usage-kicker">Minimal Variant</p>
-                <h3>Single-track and lightweight</h3>
+            <div class="usage-layout">
+              <div class="usage-preview">
+                <div class="usage-head">
+                  <div>
+                    <p class="usage-kicker">Minimal Variant</p>
+                    <h3>Single-track and lightweight</h3>
+                  </div>
+                  <p class="usage-copy">Use it when the player should feel like a compact product module, not a full music surface.</p>
+                </div>
+                <mixtape-player id="minimal-player" class="player-frame player-frame-variant player-frame-minimal"></mixtape-player>
               </div>
-              <p class="usage-copy">Strip it back for product pages, headers, or focused single-release embeds.</p>
-            </div>
-            <mixtape-player id="minimal-player" class="player-frame player-frame-variant player-frame-minimal"></mixtape-player>
-            <pre><code>&lt;script
+              <div class="usage-code">
+                <p class="usage-code-label">Snippet</p>
+                <pre><code>&lt;script
   src="https://your-domain.com/dist/mixtape-player.min.js"
   data-mixtape-widget
   data-variant="minimal"
   data-config='{"title":"Terminal Glow","artist":"Mira Vale","tracks":[{"title":"Terminal Glow","src":"/audio/terminal-glow.mp3"}]}'
 &gt;&lt;/script&gt;</code></pre>
+            </div>
+            </div>
           </section>
 
           <section class="usage-card usage-card-classic">
@@ -134,8 +163,9 @@
                 <p class="usage-kicker">Classic Mount</p>
                 <h3>Programmatic setup with JavaScript</h3>
               </div>
-              <p class="usage-copy">Use the custom element directly when you want to load config in your own scripts instead of inline JSON.</p>
+              <p class="usage-copy">Use the custom element directly when you want to manage configuration inside your own scripts.</p>
             </div>
+            <p class="usage-code-label">Snippet</p>
             <pre><code>&lt;script src="dist/mixtape-player.min.js"&gt;&lt;/script&gt;
 &lt;mixtape-player id="player"&gt;&lt;/mixtape-player&gt;
 &lt;script&gt;

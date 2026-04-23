@@ -26,6 +26,7 @@ body {
     radial-gradient(circle at right 20%, rgba(34, 89, 76, 0.13), transparent 22%),
     linear-gradient(180deg, #fbf7ef 0%, #f2ead8 100%);
   color: var(--page-ink);
+  overflow-x: hidden;
 }
 
 body::before {
@@ -43,14 +44,14 @@ body::before {
 
 .page {
   position: relative;
-  width: min(1180px, calc(100vw - 40px));
+  width: min(1120px, calc(100vw - 32px));
   margin: 0 auto;
-  padding: 44px 0 84px;
+  padding: 36px 0 72px;
 }
 
 .intro {
-  max-width: 920px;
-  margin-bottom: 34px;
+  max-width: 760px;
+  margin-bottom: 28px;
 }
 
 .eyebrow,
@@ -66,59 +67,62 @@ body::before {
 .section-head h2 {
   margin: 0;
   font-family: "Fraunces", Georgia, serif;
-  font-size: clamp(2.4rem, 6vw, 5.4rem);
-  line-height: 0.94;
+  font-size: clamp(2.35rem, 5vw, 4.8rem);
+  line-height: 0.96;
   letter-spacing: -0.04em;
-  max-width: 12ch;
+  max-width: 11ch;
 }
 
 .lede,
 .section-head p,
 .tool-card p {
   max-width: 64ch;
-  margin: 18px 0 0;
-  font-size: 1.08rem;
-  line-height: 1.7;
+  margin: 14px 0 0;
+  font-size: 1rem;
+  line-height: 1.65;
   color: var(--page-muted);
 }
 
 .meta-strip {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 28px;
+  gap: 10px;
+  margin-top: 22px;
 }
 
 .meta-strip span {
-  padding: 11px 16px;
+  padding: 10px 14px;
   border-radius: 999px;
   background: rgba(255, 251, 243, 0.7);
   border: 1px solid var(--panel-border);
   box-shadow: var(--panel-shadow);
-  font-size: 0.94rem;
+  font-size: 0.9rem;
   color: rgba(16, 32, 28, 0.74);
 }
 
 mixtape-player {
   display: block;
+  width: 100%;
+  max-width: 100%;
   margin-top: 14px;
 }
 
 .hero-demo {
   display: grid;
-  gap: 18px;
-  margin-top: 10px;
+  gap: 14px;
+  margin-top: 6px;
+  margin-bottom: 28px;
 }
 
 .hero-demo-copy {
-  max-width: 760px;
+  max-width: 700px;
 }
 
 .hero-demo-copy h2 {
   margin: 0;
   font-family: "Fraunces", Georgia, serif;
-  font-size: clamp(2rem, 3vw, 3rem);
-  line-height: 0.98;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  line-height: 1;
   letter-spacing: -0.04em;
 }
 
@@ -131,8 +135,7 @@ mixtape-player {
 }
 
 .player-frame-feature {
-  max-width: 960px;
-  margin: 0 auto;
+  max-width: 920px;
   --mixtape-radius: 26px;
   --mixtape-cover-radius: 22px;
   --mixtape-tracklist-max-height: 360px;
@@ -156,21 +159,21 @@ mixtape-player {
   max-width: 560px;
 }
 
+.section-stack,
 .feature-grid,
 .usage-grid {
   display: grid;
-  gap: 20px;
+  gap: 18px;
 }
 
 .feature-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin-top: 24px;
 }
 
 .tool-card,
 .usage-card,
 .snippet-section {
-  border-radius: 28px;
+  border-radius: 24px;
   border: 1px solid var(--panel-border);
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.68), rgba(249, 243, 232, 0.62)),
@@ -179,20 +182,23 @@ mixtape-player {
   backdrop-filter: blur(14px);
 }
 
+.section-stack {
+  margin-top: 20px;
+}
+
 .tool-card {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(250px, 390px);
-  gap: 22px;
-  align-items: center;
-  padding: 26px;
+  gap: 20px;
+  align-items: start;
+  padding: 24px;
 }
 
 .tool-card h2,
 .usage-card h3 {
   margin: 0;
   font-family: "Fraunces", Georgia, serif;
-  font-size: clamp(1.7rem, 2.4vw, 2.4rem);
-  line-height: 1.02;
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  line-height: 1.04;
   letter-spacing: -0.03em;
 }
 
@@ -222,7 +228,7 @@ mixtape-player {
 
 .remote-form {
   display: grid;
-  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr) auto;
+  grid-template-columns: 1fr;
   gap: 12px;
 }
 
@@ -248,40 +254,40 @@ mixtape-player {
 }
 
 .snippet-section {
-  margin-top: 24px;
-  padding: 30px;
+  margin-top: 28px;
+  padding: 24px;
 }
 
 .section-head {
-  max-width: 780px;
-  margin-bottom: 22px;
+  max-width: 720px;
+  margin-bottom: 10px;
 }
 
 .section-head h2 {
-  font-size: clamp(2.3rem, 4vw, 3.6rem);
-  max-width: 14ch;
+  font-size: clamp(1.9rem, 3vw, 2.8rem);
+  max-width: 12ch;
 }
 
 .section-head p {
-  margin-top: 16px;
+  margin-top: 10px;
+}
+
+.section-head-simple h2 {
+  max-width: none;
 }
 
 .usage-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
 }
 
 .usage-card {
-  padding: 22px;
-}
-
-.usage-card-wide {
-  grid-column: 1 / -1;
+  padding: 20px;
 }
 
 .usage-head {
   display: grid;
-  gap: 10px;
-  margin-bottom: 16px;
+  gap: 8px;
+  margin-bottom: 14px;
 }
 
 .usage-kicker {
@@ -293,19 +299,39 @@ mixtape-player {
 }
 
 .usage-card h3 {
-  font-size: 1.55rem;
+  font-size: 1.4rem;
   margin: 0;
 }
 
 .usage-copy {
   margin: 0;
-  font-size: 0.98rem;
-  line-height: 1.65;
+  font-size: 0.96rem;
+  line-height: 1.6;
   color: var(--page-muted);
 }
 
+.usage-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 420px);
+  gap: 18px;
+  align-items: start;
+}
+
+.usage-preview,
+.usage-code {
+  min-width: 0;
+}
+
 .usage-card mixtape-player {
-  margin: 0 0 18px;
+  margin: 0;
+}
+
+.usage-code-label {
+  margin: 0 0 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.72rem;
+  color: rgba(16, 32, 28, 0.58);
 }
 
 .usage-card-classic {
@@ -315,33 +341,26 @@ mixtape-player {
 pre {
   margin: 0;
   overflow-x: auto;
-  padding: 18px;
-  border-radius: 20px;
+  padding: 16px;
+  border-radius: 18px;
   background: #102a24;
   color: #f6eedf;
-  font-size: 0.92rem;
-  line-height: 1.6;
+  font-size: 0.88rem;
+  line-height: 1.55;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 @media (max-width: 960px) {
   .feature-grid,
-  .usage-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .tool-card {
-    grid-template-columns: 1fr;
-  }
-
-  .remote-form {
+  .usage-grid,
+  .usage-layout {
     grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 840px) {
   .page {
-    width: min(100vw - 24px, 1180px);
+    width: min(100vw - 24px, 1120px);
     padding-top: 24px;
   }
 
@@ -366,18 +385,23 @@ pre {
 
 @media (max-width: 520px) {
   .page {
-    width: min(100vw - 20px, 1180px);
+    width: min(100vw - 16px, 1120px);
     padding-top: 18px;
   }
 
   .intro {
+    max-width: none;
     margin-bottom: 24px;
   }
 
   .intro h1,
   .section-head h2 {
-    font-size: 2.05rem;
-    line-height: 0.96;
+    font-size: 1.9rem;
+    line-height: 0.98;
+  }
+
+  .intro h1 {
+    max-width: 9ch;
   }
 
   .lede,
@@ -394,5 +418,15 @@ pre {
   .meta-strip span {
     padding: 10px 14px;
     font-size: 0.88rem;
+  }
+
+  .tool-card,
+  .snippet-section,
+  .usage-card {
+    border-radius: 20px;
+  }
+
+  .hero-demo-copy h2 {
+    font-size: 1.65rem;
   }
 }

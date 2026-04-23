@@ -17,6 +17,8 @@ MIXTAPE_PLAYER_TEMPLATE.innerHTML = `
       --mixtape-font: "Space Grotesk", "Avenir Next", sans-serif;
       --mixtape-tracklist-max-height: 440px;
       display: block;
+      width: 100%;
+      max-width: 100%;
       min-width: 0;
       font-family: var(--mixtape-font);
       color: var(--mixtape-text);
